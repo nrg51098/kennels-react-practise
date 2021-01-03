@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import {useHistory } from "react-router-dom"
 import { EmployeeContext } from "./EmployeeProvider"
 import { EmployeeCard } from "./EmployeeCard"
 import "./employee.css"
@@ -6,6 +7,7 @@ import "./employee.css"
 export const EmployeeList = () => {
   // This state changes when `getEmployees()` is invoked below
   const { employees, getEmployees } = useContext(EmployeeContext)
+  const history = useHistory()
 
   //useEffect - reach out to the world for something
   useEffect(() => {
@@ -16,6 +18,11 @@ export const EmployeeList = () => {
 
 
   return (
+      <>
+    <h2>Employees</h2>
+    <button onClick={() => {history.push("/employees/create")}}>
+        Add Employee
+    </button>
     <div className="employees">
       {console.log("EmployeeList: Render", employees)}
       {
@@ -24,5 +31,6 @@ export const EmployeeList = () => {
         })
       }
     </div>
+    </>
   )
 }
