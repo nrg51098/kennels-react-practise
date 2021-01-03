@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import {useHistory } from "react-router-dom"
 import { CustomerContext } from "./CustomerProvider"
 import { CustomerCard } from "./CustomerCard"
 import "./customer.css"
@@ -6,6 +7,8 @@ import "./customer.css"
 export const CustomerList = () => {
   // This state changes when `getCustomers()` is invoked below
   const { customers, getCustomers } = useContext(CustomerContext)
+  const history = useHistory()
+
 
   //useEffect - reach out to the world for something
   useEffect(() => {
@@ -16,6 +19,12 @@ export const CustomerList = () => {
 
 
   return (
+
+    <>
+    <h2>Customers</h2>
+    <button onClick={() => {history.push("/customers/create")}}>
+        Add Customer
+    </button>
     <div className="customers">
       {console.log("CustomerList: Render", customers)}
       {
@@ -24,5 +33,6 @@ export const CustomerList = () => {
         })
       }
     </div>
+    </>
   )
 }
