@@ -21,10 +21,7 @@ export const CustomerList = () => {
   return (
 
     <>
-    <h2>Customers</h2>
-    <button onClick={() => {history.push("/customers/create")}}>
-        Add Customer
-    </button>
+    <h2>Customers</h2>    
     <div className="customers">
       {console.log("CustomerList: Render", customers)}
       {
